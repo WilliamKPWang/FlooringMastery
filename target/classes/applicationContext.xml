@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="io" class="com.w.flooringmastery.UI.UserIOImpl" />
+
+    <bean id="dao" class="com.w.flooringmastery.dao.FlooringMasteryDAOImpl"/>
+    <bean id="view" class="com.w.flooringmastery.UI.FlooringMasteryView">
+        <constructor-arg ref="io"/>
+    </bean>
+    <bean id="service" class="com.w.flooringmastery.service.FlooringMasteryServiceImpl">
+        <constructor-arg ref="dao"/>
+    </bean>
+    <bean id="controller" class="com.w.flooringmastery.controller.FlooringMasteryController">
+        <constructor-arg ref="service"/>
+        <constructor-arg ref="view"/>
+    </bean>
+</beans>
