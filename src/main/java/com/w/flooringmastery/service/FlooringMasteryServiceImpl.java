@@ -88,9 +88,10 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     @Override
     public String ValidateCustomerName(String name) throws InvalidOrderException {
         String regex = "[#$%^&*()_+{}\\[\\]:;<>/?-]";
+
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(name);
-        if (m.find()) {
+        if (m.find() || name.isEmpty()) {
 //        if (!name.matches(regex)) {
             throw new InvalidOrderException("Invalid Name");
         }
@@ -98,7 +99,7 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     }
 
     @Override
-    public Map<Integer, Order> getAllOrdersDate(String dateAsString) throws InvalidOrderException {
+    public Map<Integer, Order> getAllOrdersDate(String dateAsString) throws InvalidOrderException, FlooringMasteryPersistenceException {
         Map<Integer, Order> map = dao.GetAllOrdersFromDate(dateAsString);
         if (map.isEmpty()) {
             throw new InvalidOrderException("no orders with that date");
@@ -117,7 +118,7 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     }
 
     @Override
-    public void AddOrder(Order order) throws InvalidOrderException {
+    public void AddOrder(Order order) throws InvalidOrderException, FlooringMasteryPersistenceException {
 
 //
 //    Order Date – Must be in the future
@@ -165,7 +166,7 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     @Override
     public Order getOrder(int orderNumber, LocalDate date) throws InvalidOrderException {
         Order order = dao.getOrder(orderNumber);
-        if (order == null || order.getOrderDate() != date) {
+        if (order == null || !order.getOrderDate().equals(date)) {
             throw new InvalidOrderException("no orders with that date and order number");
         }
         return order;
@@ -181,7 +182,7 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
     }
 
     @Override
-    public void EditOrder(Order order) throws InvalidOrderException {
+    public void EditOrder(Order order) throws InvalidOrderException, FlooringMasteryPersistenceException {
         Order orderWithMods = dao.getOrder(order.getOrderNumber());
 //            order.setCustomerName(view.GetCustomerName());
         if (order.getCustomerName() != "" && order.getCustomerName() != "\n" && order.getCustomerName() != null) {
@@ -219,6 +220,9 @@ public class FlooringMasteryServiceImpl implements FlooringMasteryService {
         //    State – Entered states must be checked against the tax file. If the state does not exist in the tax file we cannot sell there. If the tax file is modified to include the state, it should be allowed without changing the application code.
         if (dao.GetTax(order.getState()) == null) {
             throw new InvalidOrderException("Invalid State");
+        }
+        if (dao.GetProduct(order.getProductType()) == null) {
+            throw new InvalidOrderException("Invalid Product");
         }
 
         //    Product Type – Show a list of available products and pricing information to choose from. Again, if a product is added to the file it should show up in the application without a code change.

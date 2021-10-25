@@ -5,8 +5,7 @@
 package com.w.flooringmastery;
 
 import com.w.flooringmastery.controller.FlooringMasteryController;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  *
@@ -25,16 +24,16 @@ public class App {
 //            controller.run();
 //        
 
-        ApplicationContext appContext
-                = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-        FlooringMasteryController controller = appContext.getBean("controller", FlooringMasteryController.class);
-        controller.run();
-
-//        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
-//        appContext.scan("com.w.flooringmastery");
-//        appContext.refresh();
-//
-//        FlooringMasteryController controller = appContext.getBean("flooringMasteryController", FlooringMasteryController.class);
+//        ApplicationContext appContext
+//                = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+//        FlooringMasteryController controller = appContext.getBean("controller", FlooringMasteryController.class);
 //        controller.run();
+
+        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext.scan("com.w.flooringmastery");
+        appContext.refresh();
+
+        FlooringMasteryController controller = appContext.getBean("flooringMasteryController", FlooringMasteryController.class);
+        controller.run();
     }
 }

@@ -33,15 +33,15 @@ public interface FlooringMasteryService {
 
     Order getOrder(int orderNumber) throws InvalidOrderException;
 
-    Map<Integer, Order> getAllOrdersDate(String dateAsString) throws InvalidOrderException;
+    Map<Integer, Order> getAllOrdersDate(String dateAsString) throws InvalidOrderException, FlooringMasteryPersistenceException;
 
     List<Order> getAllOrders();
 
     List<Product> getAllProducts();
 
-    void AddOrder(Order order) throws InvalidOrderException;
+    void AddOrder(Order order) throws InvalidOrderException, FlooringMasteryPersistenceException;
 
-    void EditOrder(Order order) throws InvalidOrderException;
+    void EditOrder(Order order) throws InvalidOrderException, FlooringMasteryPersistenceException;
 
     void RemoveOrder(int orderNumber) throws InvalidOrderException;
 

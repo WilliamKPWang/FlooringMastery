@@ -61,6 +61,7 @@ public class FlooringMasteryView {
             io.print("Area: " + CO.getArea());
             io.print("Total: " + CO.getTotal());
             io.print("================================================");
+//            CO.printvalues();
         }
 
     }
@@ -73,7 +74,6 @@ public class FlooringMasteryView {
         io.print("Product Type: " + order.getProductType());
         io.print("Area: " + order.getArea());
         io.print("Total: " + order.getTotal());
-
     }
 
     public String GetCustomerName() {

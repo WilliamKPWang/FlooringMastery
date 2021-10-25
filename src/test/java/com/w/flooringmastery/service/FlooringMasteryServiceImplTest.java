@@ -96,8 +96,9 @@ public class FlooringMasteryServiceImplTest {
         String expResult = "Acme, Inc.!@#$%^";
         try {
             String result = instance.ValidateCustomerName(expResult);
+            fail("if this line runs, this test fails");
         } catch (InvalidOrderException IOE) {
-            assert (true);
+//            assert (true);
         }
     }
 

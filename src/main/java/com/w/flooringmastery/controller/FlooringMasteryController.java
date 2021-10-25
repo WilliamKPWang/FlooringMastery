@@ -24,9 +24,12 @@ public class FlooringMasteryController {
     private FlooringMasteryView view;
     @Autowired
     private FlooringMasteryServiceImpl service;
-    private String orderFile = "./SampleFileData/Orders/Orders_06022013.txt";
+    private String orderFile = "./SampleFileData/Orders/Orders_26102021.txt";
     private String productsFile = "./SampleFileData/Data/Products.txt";
     private String taxesFile = "./SampleFileData/Data/Taxes.txt";
+
+    public FlooringMasteryController() {
+    }// constructor
 
     public FlooringMasteryController(FlooringMasteryView view, FlooringMasteryServiceImpl service) {
         this.view = view;
@@ -89,11 +92,13 @@ public class FlooringMasteryController {
         String dateAsString = view.AskForDate();
         try {
             service.ValidateDate(dateAsString);
-        } catch (InvalidOrderException IOE) {
-            view.DisplayErrorMessage(IOE.getMessage());
-        }
-        try {
-            view.PrintOrders(service.getAllOrdersDate(dateAsString));
+            try {
+                view.PrintOrders(service.getAllOrdersDate(dateAsString));
+            } catch (InvalidOrderException IOE) {
+                view.DisplayErrorMessage(IOE.getMessage());
+            } catch (FlooringMasteryPersistenceException e) {
+                view.DisplayErrorMessage(e.getMessage());
+            }
         } catch (InvalidOrderException IOE) {
             view.DisplayErrorMessage(IOE.getMessage());
         }
@@ -126,8 +131,11 @@ public class FlooringMasteryController {
             } catch (InvalidOrderException IOE) {
                 view.DisplayErrorMessage(IOE.getMessage());
                 isValid = false;
+            } catch (FlooringMasteryPersistenceException e) {
+
+                view.DisplayErrorMessage(e.getMessage());
             }
-        }while (!isValid);
+        } while (!isValid);
     }
 
     private void EditOrder() {
@@ -140,7 +148,7 @@ public class FlooringMasteryController {
                 order.setProductType(view.GetProductType());
                 order.setArea(new BigDecimal(view.GetArea()));
                 service.EditOrder(order);
-            } catch (InvalidOrderException IOE) {
+            } catch (InvalidOrderException | FlooringMasteryPersistenceException IOE) {
                 view.DisplayErrorMessage(IOE.getMessage());
             }
         } catch (InvalidOrderException IOE) {

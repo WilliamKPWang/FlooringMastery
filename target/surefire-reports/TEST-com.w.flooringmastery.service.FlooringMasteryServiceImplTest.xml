@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.116" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.04" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.1+9-18"/>
@@ -14,7 +14,6 @@
     <property name="user.script" value=""/>
     <property name="user.country" value="CA"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="test" value="com.w.flooringmastery.service.FlooringMasteryServiceImplTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="C:\Users\William\Documents\GitHub\FlooringMastery"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
@@ -44,7 +43,7 @@
     <property name="java.class.path" value="C:\Program Files\NetBeans-12.5\netbeans\java\maven\bin\..\boot\plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="15"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=com.w.flooringmastery.service.FlooringMasteryServiceImplTest -Dmaven.ext.class.path=C:\Program Files\NetBeans-12.5\netbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=C:\Program Files\NetBeans-12.5\netbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 clean install"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-15.0.1"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -59,13 +58,13 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testEditOrder" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.035"/>
-  <testcase name="testRemoveOrder" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.008"/>
-  <testcase name="testAddOrder" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.007"/>
-  <testcase name="testValidateOrderBadState" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.016"/>
-  <testcase name="testValidateBadCustomerName" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.007"/>
-  <testcase name="testValidateOrderBadDate" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.007"/>
-  <testcase name="testValidateOrderBadName" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.008"/>
-  <testcase name="testValidateCustomerName" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.008"/>
-  <testcase name="testValidateDate" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.005"/>
+  <testcase name="testEditOrder" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0"/>
+  <testcase name="testRemoveOrder" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.004"/>
+  <testcase name="testAddOrder" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.005"/>
+  <testcase name="testValidateOrderBadState" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.011"/>
+  <testcase name="testValidateBadCustomerName" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.003"/>
+  <testcase name="testValidateOrderBadDate" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.003"/>
+  <testcase name="testValidateOrderBadName" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.003"/>
+  <testcase name="testValidateCustomerName" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.003"/>
+  <testcase name="testValidateDate" classname="com.w.flooringmastery.service.FlooringMasteryServiceImplTest" time="0.003"/>
 </testsuite>

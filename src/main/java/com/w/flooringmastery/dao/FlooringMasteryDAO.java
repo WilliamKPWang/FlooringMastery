@@ -14,9 +14,9 @@ import java.util.Map;
  */
 public interface FlooringMasteryDAO {
 
-    Map<Integer, Order> GetAllOrdersFromDate(String dateAsString);
+    Map<Integer, Order> GetAllOrdersFromDate(String dateAsString) throws FlooringMasteryPersistenceException;
 
-    void AddOrder(Order order);
+    void AddOrder(Order order) throws FlooringMasteryPersistenceException;
 
     void RemoveOrder(int orderNumber);
 

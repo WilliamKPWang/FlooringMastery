@@ -91,7 +91,7 @@ public class FlooringMasteryDAOImplTest {
      * Test of AddOrder method, of class FlooringMasteryDAOImpl.
      */
     @Test
-    public void testAddOrder() {
+    public void testAddOrder() throws Exception {
         System.out.println("AddOrder");
         Order order = new Order(2, "Doctor Who", "WA",
                 new BigDecimal("9.25"), "Wood", new BigDecimal("243.00"),
@@ -116,7 +116,7 @@ public class FlooringMasteryDAOImplTest {
      * Test of getOrder method, of class FlooringMasteryDAOImpl.
      */
     @Test
-    public void testGetOrder() {
+    public void testGetOrder() throws Exception {
         System.out.println("getOrder");
 
 //        Order expResult = null;

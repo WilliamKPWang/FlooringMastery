@@ -40,7 +40,8 @@ public class FlooringMasteryDAOImpl implements FlooringMasteryDAO {
     private String taxFileHeader = "";
 
     @Override
-    public Map<Integer, Order> GetAllOrdersFromDate(String dateAsString) {
+    public Map<Integer, Order> GetAllOrdersFromDate(String dateAsString) throws FlooringMasteryPersistenceException {
+        this.LoadOrdersFileNEW("./SampleFileData/Orders/Orders_" + dateAsString.substring(0, 2) + dateAsString.substring(3, 5) + dateAsString.substring(6) + ".txt");
         LocalDate date = LocalDate.parse(dateAsString, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
         Map<Integer, Order> map = new HashMap<>();// = orders;
@@ -63,8 +64,9 @@ public class FlooringMasteryDAOImpl implements FlooringMasteryDAO {
     }
 
     @Override
-    public void AddOrder(Order order) {
+    public void AddOrder(Order order) throws FlooringMasteryPersistenceException {
         orders.put(order.getOrderNumber(), order);
+        this.WriteOrdersFileNEW("./SampleFileData/Orders/Orders_" + order.getOrderDate().toString().substring(8) + order.getOrderDate().toString().substring(5, 7) + order.getOrderDate().toString().substring(0, 4) + ".txt");
     }
 
     @Override
